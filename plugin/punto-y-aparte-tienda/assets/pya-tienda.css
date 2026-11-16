@@ -1,0 +1,90 @@
+/* Recomendador de lecturas */
+.pya-lee { background: #1b2433; color: #f6f1e7; padding: clamp(60px, 8vw, 110px) 24px; position: relative; overflow: hidden; scroll-margin-top: 80px; }
+.pya-lee::before { content: ""; position: absolute; width: 760px; height: 760px; right: -260px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgb(232 179 58 / 0.22), transparent 65%); pointer-events: none; }
+.pya-lee::after { content: "¶"; position: absolute; right: 4%; bottom: -60px; font-family: Newsreader, Georgia, serif; font-size: 420px; line-height: 1; color: rgb(246 241 231 / 0.04); pointer-events: none; }
+.pya-lee__in { position: relative; z-index: 1; max-width: 1192px; margin: 0 auto; }
+.pya-lee__cab { max-width: 660px; }
+.pya-lee__cab .pya-titulo { color: #fffcf5; }
+.pya-lee__cab .pya-titulo em { color: #e8b33a; }
+.pya-lee__cab > p:last-child { color: rgb(246 241 231 / 0.75); font-size: 17px; margin-top: 16px; }
+.pya-lee__botones { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: 40px 0 18px; }
+.pya-lee__botones button { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; border-radius: 18px; border: 1.5px solid rgb(246 241 231 / 0.16); background: rgb(255 252 245 / 0.04); color: #f6f1e7; font: inherit; font-weight: 600; font-size: 15px; text-align: left; cursor: pointer; transition: background 0.3s, border-color 0.3s, transform 0.3s, color 0.3s; }
+.pya-lee__botones button:hover { border-color: rgb(246 241 231 / 0.4); transform: translateY(-2px); }
+.pya-lee__botones button[aria-selected="true"] { background: #e8b33a; border-color: #e8b33a; color: #1b2433; }
+.pya-lee__botones button:focus-visible { outline: 3px solid #e8b33a; outline-offset: 3px; }
+.pya-lee__botones svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.pya-lee__ritmo { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px; padding: 16px 22px; margin-bottom: 22px; border-radius: 18px; background: rgb(255 252 245 / 0.06); border: 1px solid rgb(246 241 231 / 0.12); }
+.pya-lee__ritmo label { font-weight: 600; font-size: 15px; }
+.pya-lee__ritmo output { font-family: Newsreader, Georgia, serif; font-size: 22px; color: #e8b33a; min-width: 120px; text-align: right; }
+.pya-lee__ritmo input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 99px; background: linear-gradient(90deg, #e8b33a var(--p, 25%), rgb(246 241 231 / 0.18) var(--p, 25%)); cursor: pointer; }
+.pya-lee__ritmo input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fffcf5; border: 4px solid #e8b33a; box-shadow: 0 4px 12px rgb(0 0 0 / 0.35); }
+.pya-lee__ritmo input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fffcf5; border: 4px solid #e8b33a; }
+.pya-lee__ritmo input[type=range]:focus-visible { outline: 3px solid #e8b33a; outline-offset: 6px; }
+.pya-lee__panel[hidden] { display: none; }
+.pya-lee__panel.entra .pya-lee__libro { animation: pya-panel 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.pya-lee__panel.entra .pya-lee__libro:nth-child(2) { animation-delay: 0.08s; }
+@keyframes pya-panel { from { opacity: 0; transform: translateY(14px); } }
+.pya-lee__frase { margin: 0 0 16px; font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 21px; color: rgb(246 241 231 / 0.88); }
+.pya-lee__libros { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.pya-lee__libro { display: grid; grid-template-columns: 170px 1fr; gap: 22px; padding: 16px; border-radius: 22px; background: #fffcf5; color: #1b2433; }
+.pya-lee__portada { display: block; align-self: start; border-radius: 14px; overflow: hidden; }
+.pya-lee__portada img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; margin: 0 !important; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.pya-lee__libro:hover .pya-lee__portada img { transform: scale(1.05); }
+.pya-lee__info { display: flex; flex-direction: column; gap: 6px; padding: 4px 4px 4px 0; }
+.pya-lee__info h3 { margin: 0; font-size: 24px; line-height: 1.1; }
+.pya-lee__info h3 a { color: #1b2433 !important; text-decoration: none; }
+.pya-lee__autor { margin: 0; font-size: 14px; color: #5f6773; }
+.pya-lee__info blockquote { margin: 6px 0 4px; padding: 0 0 0 12px; border-left: 3px solid #e8b33a; font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.4; color: #3a4352; }
+.pya-lee__dias { margin: 4px 0 0; font-size: 14px; color: #2f4b7c; }
+.pya-lee__dias b { font-weight: 700; }
+.pya-lee__pie { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 8px; }
+.pya-lee__precio { font-weight: 700; font-size: 16px; }
+.pya-lee__precio del { opacity: 0.55; font-weight: 500; margin-right: 4px; }
+.pya-lee__precio ins { text-decoration: none; color: #2f4b7c; }
+.pya-btn--peq { padding: 10px 18px !important; font-size: 14px !important; box-shadow: none !important; }
+
+/* Ficha del libro */
+.pya-ficha-autor { margin: -6px 0 14px !important; font-size: 17px; color: #5f6773; }
+.pya-ficha-autor b { color: #1b2433; font-weight: 600; }
+.pya-tarjeta-autor { margin: 2px 0 0 !important; padding: 0 20px; font-size: 14px; color: #5f6773; }
+.pya-empieza { margin: 6px 0 24px; padding: 22px 24px; border-radius: 20px; background: #fffcf5; border: 1px solid rgb(27 36 51 / 0.12); position: relative; overflow: hidden; }
+.pya-empieza::after { content: "¶"; position: absolute; right: 18px; top: 10px; font-family: Newsreader, Georgia, serif; font-size: 80px; line-height: 1; color: rgb(232 179 58 / 0.22); }
+.pya-empieza figcaption { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #a8741a; }
+.pya-empieza blockquote { margin: 8px 0 12px; padding: 0; border: 0; font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 23px; line-height: 1.3; color: #1b2433; position: relative; }
+.pya-empieza p { margin: 0; font-size: 14px; color: #5f6773; }
+
+/* Envoltorio de regalo */
+.pya-regalo { margin: 0 0 18px; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed rgb(27 36 51 / 0.22); background: #fffcf5; transition: border-color 0.3s, background 0.3s; }
+.pya-regalo.activo { border-color: #e8b33a; border-style: solid; background: #fff8e8; }
+.pya-regalo__si { display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; font-size: 15.5px; }
+.pya-regalo__si input { width: 20px; height: 20px; accent-color: #2f4b7c; margin: 0; }
+.pya-regalo__si b { margin-left: auto; color: #2f4b7c; }
+.pya-regalo__dedi { margin-top: 12px; display: grid; gap: 6px; }
+.pya-regalo__dedi label { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5f6773; }
+.pya-regalo__dedi textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid rgb(27 36 51 / 0.18); background: #fff; font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 17px; color: #1b2433; resize: vertical; }
+.pya-regalo__dedi textarea:focus { outline: 2px solid #e8b33a; outline-offset: 1px; }
+.pya-regalo__dedi small { color: #5f6773; font-size: 13px; }
+.pya-regalo__dedi[hidden] { display: none; }
+
+@media (max-width: 1000px) {
+	.pya-lee__botones { grid-template-columns: repeat(6, 150px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; margin-inline: -24px; padding-inline: 24px; scrollbar-width: none; }
+	.pya-lee__botones button { scroll-snap-align: start; }
+	.pya-lee__libros { grid-template-columns: 1fr; }
+}
+@media (max-width: 781px) {
+	.pya-lee { padding-inline: 16px; }
+	.pya-lee__botones { margin-inline: -16px; padding-inline: 16px; grid-template-columns: repeat(6, 128px); }
+	.pya-lee__ritmo { grid-template-columns: 1fr auto; gap: 10px 14px; padding: 14px 16px; }
+	.pya-lee__ritmo input[type=range] { grid-column: 1 / -1; grid-row: 2; }
+	.pya-lee__ritmo output { min-width: 0; }
+	.pya-lee__frase { font-size: 18px; }
+	.pya-lee__libro { grid-template-columns: 104px 1fr; gap: 14px; padding: 12px; }
+	.pya-lee__info h3 { font-size: 20px; }
+	.pya-lee__info blockquote { font-size: 14.5px; }
+	.pya-lee__pie { flex-direction: column; align-items: flex-start; }
+	.pya-tarjeta-autor { padding: 0 12px; font-size: 12.5px; }
+	.pya-empieza blockquote { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.pya-lee__panel.entra .pya-lee__libro { animation: none; }
+}
