@@ -3,7 +3,7 @@ Theme Name: Punto y Aparte
 Template: twentytwentyfive
 Description: Tema hijo de la tienda de ejemplo Punto y Aparte (librería y papelería). Hecho por Dania360.
 Author: Dania360
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.6
 Text Domain: punto-y-aparte
 */
@@ -244,6 +244,69 @@ em.pya-linea { animation-delay: 0.18s; }
 	.pya-hero__img { transform: none; }
 }
 
+/* ---------- Retoques de la versión 1.1 ---------- */
+/* El aviso de tienda de prueba no tapa el final de la página */
+body.woocommerce-demo-store { padding-bottom: 42px; }
+.woocommerce-store-notice, p.demo_store { margin: 0 !important; text-align: center; line-height: 1.4 !important; }
+
+/* Logo del pie con su tamaño */
+.pya-pie .pya-logo span { display: inline; margin: 0; font-size: inherit; color: inherit; }
+
+/* Tarjetas: precio y botón siempre a la misma altura */
+.woocommerce ul.products li.product .woocommerce-loop-product__link { display: flex !important; flex-direction: column; flex: 1 1 auto; text-decoration: none; }
+.woocommerce ul.products li.product .woocommerce-loop-product__link .price { margin: auto 0 14px !important; padding-top: 10px; }
+.woocommerce ul.products li.product .button { margin-top: 0 !important; }
+
+/* Ficha de producto en dos columnas, con la foto fija al bajar */
+@media (min-width: 900px) {
+	.single-product div.product { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); column-gap: clamp(32px, 5vw, 72px); align-items: start; }
+	.single-product div.product > .woocommerce-product-gallery { position: sticky !important; top: 100px; width: 100% !important; float: none !important; margin: 0 !important; }
+	.admin-bar.single-product div.product > .woocommerce-product-gallery { top: 132px; }
+	.single-product div.product > .summary { width: 100% !important; float: none !important; margin: 0 !important; }
+	.single-product div.product > .woocommerce-tabs, .single-product div.product > .related, .single-product div.product > .upsells { grid-column: 1 / -1; }
+}
+.single-product div.product > .woocommerce-tabs { margin-top: 56px; }
+.single-product div.product > .related { margin-top: 64px; }
+.single-product .related > h2 { font-family: var(--pya-display); font-weight: 500; font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -0.03em; margin: 0 0 26px; }
+.single-product .woocommerce-product-details__short-description { font-size: 17px; color: #4a3f38; }
+.single-product .product_meta { margin-top: 18px; font-size: 14px; color: var(--pya-suave); }
+.single-product form.cart .single_add_to_cart_button { min-height: 52px; }
+.single-product form.cart .woocommerce-variation-add-to-cart, .single-product form.cart:not(.variations_form) { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.single-product form.cart .woocommerce-variation-add-to-cart > p, .single-product form.cart .woocommerce-variation-add-to-cart > input[type="hidden"] { flex-basis: 100%; }
+.single-product form.cart .single_add_to_cart_button { flex: 1 1 190px; max-width: 320px; float: none !important; }
+.single-product form.cart .quantity { float: none !important; margin: 0 !important; }
+.woocommerce-tabs .panel h2 { font-family: var(--pya-display); font-weight: 500; font-size: 26px; margin: 0 0 12px; }
+.woocommerce-tabs .panel p { max-width: 68ch; }
+
+/* Cabecera de la tienda */
+.pya-tienda .woocommerce-products-header__title, .pya-tienda h1.page-title { font-family: var(--pya-display); font-weight: 500; font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.035em; line-height: 1; margin: 6px 0 14px; }
+.pya-tienda .term-description { max-width: 60ch; font-size: 17px; color: var(--pya-suave); }
+.woocommerce .woocommerce-breadcrumb { font-size: 13.5px; color: var(--pya-suave); }
+
+/* Preguntas frecuentes */
+.pya-faq { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 6vw, 90px); align-items: start; padding-block: 20px 100px; }
+.pya-faq__cab p:last-child { color: var(--pya-suave); margin: 16px 0 0; max-width: 34ch; }
+.pya-faq__lista { border-top: 1px solid var(--pya-linea); }
+.pya-faq details { border-bottom: 1px solid var(--pya-linea); }
+.pya-faq summary { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 22px 0; cursor: pointer; list-style: none; font-family: var(--pya-display); font-size: clamp(19px, 2vw, 23px); font-weight: 500; }
+.pya-faq summary::-webkit-details-marker { display: none; }
+.pya-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--pya-linea); font-family: "DM Sans", sans-serif; font-size: 20px; font-weight: 500; color: var(--pya-azul); transition: transform 0.35s var(--pya-curva), background 0.3s, color 0.3s; }
+.pya-faq details[open] summary::after { transform: rotate(45deg); background: var(--pya-azul); border-color: var(--pya-azul); color: #fff; }
+.pya-faq summary:focus-visible { outline: 3px solid var(--pya-azul); outline-offset: 4px; border-radius: 6px; }
+.pya-faq details p { margin: 0 0 22px; max-width: 62ch; color: #4a3f38; }
+
+@media (max-width: 781px) {
+	body.woocommerce-demo-store { padding-bottom: 58px; }
+	.woocommerce-store-notice, p.demo_store { font-size: 12px !important; padding: 8px 12px !important; }
+	.woocommerce ul.products li.product .woocommerce-loop-product__link .price { margin-bottom: 10px !important; }
+	.pya-faq { grid-template-columns: 1fr; padding-block: 0 60px; }
+	.pya-faq summary { padding: 18px 0; }
+	/* Carrito: las sugerencias, de dos en dos */
+	.wp-block-woocommerce-cart .wc-block-product-template { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+	.wp-block-woocommerce-cart .wc-block-product-template .wc-block-product { width: auto !important; margin: 0 !important; }
+	.wp-block-woocommerce-cart .wc-block-product-template .wp-block-post-title { font-size: 16px !important; padding-inline: 10px; }
+}
+
 /* ---------- Punto y Aparte ---------- */
 .pya-ceja--oscura span { background: var(--pya-mostaza); }
 .pya-ceja span { background: #e8b33a; }
@@ -261,5 +324,3 @@ em.pya-linea { animation-delay: 0.18s; }
 .pya-ventaja svg { stroke: var(--pya-azul); }
 .pya-hero__img { object-position: 65% 50%; }
 .pya-pie__nota { font-size: 12.5px; opacity: 0.7; margin-top: 4px; }
-body.woocommerce-demo-store { padding-bottom: 46px; }
-@media (max-width: 781px) { body.woocommerce-demo-store { padding-bottom: 96px; } }
